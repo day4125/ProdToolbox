@@ -696,4 +696,65 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
+
+  // --- PDF KB per page calculator ---
+  const pdfSizeMbInput = document.getElementById("pdfSizeMb");
+  const pdfPageCountInput = document.getElementById("pdfPageCount");
+  const pdfKbResult = document.getElementById("pdfKbResult");
+
+  function updatePdfKbPerPage() {
+    if (!pdfSizeMbInput || !pdfPageCountInput || !pdfKbResult) return;
+
+    const sizeValue = pdfSizeMbInput.value.trim().replace(",", ".");
+    const pageValue = pdfPageCountInput.value.trim();
+
+    pdfKbResult.classList.remove("optimal", "heavy", "action");
+
+    if (!sizeValue || !pageValue) {
+      pdfKbResult.textContent = "Fyll i båda fälten för att se resultat.";
+      return;
+    }
+
+    const pdfSizeMb = Number(sizeValue);
+    const pageCount = Number(pageValue);
+
+    if (!Number.isFinite(pdfSizeMb) || pdfSizeMb <= 0) {
+      pdfKbResult.textContent = "Ange ett giltigt MB-värde större än 0.";
+      return;
+    }
+
+    if (!Number.isInteger(pageCount) || pageCount <= 0) {
+      pdfKbResult.textContent = "Ange ett giltigt sidantal (heltal större än 0).";
+      return;
+    }
+
+    const kbPerPage = (pdfSizeMb * 1024) / pageCount;
+    const formattedResult = kbPerPage.toLocaleString("sv-SE", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
+    if (kbPerPage <= 600) {
+      pdfKbResult.classList.add("optimal");
+      pdfKbResult.textContent = `${formattedResult} KB per sida - Optimal`;
+      return;
+    }
+
+    if (kbPerPage <= 1000) {
+      pdfKbResult.classList.add("heavy");
+      pdfKbResult.textContent = `${formattedResult} KB per sida - Tung`;
+      return;
+    }
+
+    pdfKbResult.classList.add("action");
+    pdfKbResult.textContent = `${formattedResult} KB per sida - Kräver åtgärd`;
+  }
+
+  if (pdfSizeMbInput) {
+    pdfSizeMbInput.addEventListener("input", updatePdfKbPerPage);
+  }
+
+  if (pdfPageCountInput) {
+    pdfPageCountInput.addEventListener("input", updatePdfKbPerPage);
+  }
 }); // End DOMContentLoaded listener

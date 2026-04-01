@@ -448,7 +448,8 @@ body.dark-mode .info-icon .tooltip-text::after {
 
 /* --- Consolidated Button Styles --- */
 #text-manipulator button,
-#diff-checker button {
+#diff-checker button,
+#pdf-kb-calculator button {
   padding: 16px 18px;
   border: none;
   border-radius: 6px;
@@ -465,28 +466,138 @@ body.dark-mode .info-icon .tooltip-text::after {
 }
 
 body.dark-mode #text-manipulator button,
-body.dark-mode #diff-checker button {
+body.dark-mode #diff-checker button,
+body.dark-mode #pdf-kb-calculator button {
   background-color: #485460;
   color: #e0e0e0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 #text-manipulator button:hover,
-#diff-checker button:hover {
+#diff-checker button:hover,
+#pdf-kb-calculator button:hover {
   background-color: #d8dade;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 body.dark-mode #text-manipulator button:hover,
-body.dark-mode #diff-checker button:hover {
+body.dark-mode #diff-checker button:hover,
+body.dark-mode #pdf-kb-calculator button:hover {
   background-color: #747474;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 #text-manipulator button:focus,
-#diff-checker button:focus {
+#diff-checker button:focus,
+#pdf-kb-calculator button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.5);
+}
+
+/* --- PDF Calculator Styles --- */
+#pdf-kb-calculator .pdf-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+#pdf-kb-calculator .pdf-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#pdf-kb-calculator label {
+  font-weight: 500;
+  color: #3c4043;
+}
+
+body.dark-mode #pdf-kb-calculator label {
+  color: #e0e0e0;
+}
+
+#pdf-kb-calculator input {
+  padding: 12px;
+  border: 1px solid #d8dee2;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: #202124;
+  background-color: #f8f9fa;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body.dark-mode #pdf-kb-calculator input {
+  background-color: #333;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+#pdf-kb-calculator input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.3);
+}
+
+body.dark-mode #pdf-kb-calculator input:focus {
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.5);
+}
+
+#pdf-kb-calculator .pdf-result {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  border: 1px solid #d8dee2;
+  font-weight: 500;
+  color: #202124;
+  text-align: center;
+}
+
+body.dark-mode #pdf-kb-calculator .pdf-result {
+  background-color: #282828;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+#pdf-kb-calculator .pdf-result.optimal {
+  background-color: #eaf7ee;
+  border-color: #2e7d32;
+  color: #1b5e20;
+}
+
+body.dark-mode #pdf-kb-calculator .pdf-result.optimal {
+  background-color: #1f3b25;
+  border-color: #81c995;
+  color: #b7f7c2;
+}
+
+#pdf-kb-calculator .pdf-result.heavy {
+  background-color: #fff8e1;
+  border-color: #f9ab00;
+  color: #8a5a00;
+}
+
+body.dark-mode #pdf-kb-calculator .pdf-result.heavy {
+  background-color: #4a3a1a;
+  border-color: #ffd666;
+  color: #ffe7a6;
+}
+
+#pdf-kb-calculator .pdf-result.action {
+  background-color: #fdeaea;
+  border-color: #d93025;
+  color: #b3261e;
+}
+
+body.dark-mode #pdf-kb-calculator .pdf-result.action {
+  background-color: #4a1f1f;
+  border-color: #ff7b72;
+  color: #ffb4ab;
 }
 
 /* --- Color Picker Card Content --- */
@@ -904,6 +1015,10 @@ body.dark-mode .theme-toggle-button {
 
   .hex {
     font-size: 0.9rem;
+  }
+
+  #pdf-kb-calculator .pdf-input-grid {
+    grid-template-columns: 1fr;
   }
 }
 
