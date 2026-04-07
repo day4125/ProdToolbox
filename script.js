@@ -734,13 +734,13 @@ document.addEventListener("DOMContentLoaded", () => {
       maximumFractionDigits: 2,
     });
 
-    if (kbPerPage <= 600) {
+    if (kbPerPage <= 500) {
       pdfKbResult.classList.add("optimal");
       pdfKbResult.textContent = `${formattedResult} KB per sida - Optimal`;
       return;
     }
 
-    if (kbPerPage <= 1000) {
+    if (kbPerPage <= 800) {
       pdfKbResult.classList.add("heavy");
       pdfKbResult.textContent = `${formattedResult} KB per sida - Tung`;
       return;
