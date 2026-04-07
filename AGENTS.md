@@ -6,7 +6,7 @@ These instructions override default behavior.
 
 ## Project Context
 
-DevHub is a collection of small, independent developer tools.
+ProdToolbox is a collection of small, independent developer tools.
 
 Each tool should be simple, self-contained, and consistent with existing UI.
 

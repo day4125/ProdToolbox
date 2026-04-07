@@ -1,11 +1,11 @@
-# DevHub
+# ProdToolbox
 
-DevHub är javascript-verktyg jag använder regelbundet samlade i samma gränssnitt: textmanipulering, diff-jämförelse och färgverktyg.
+ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gränssnitt: textmanipulering, diff-jämförelse och färgverktyg.
 
 1. Klona eller ladda ner projektet.
 2. Öppna `index.html` i webbläsaren.
 3. Använd verktygen direkt, ingen installation krävs.
-4. Senaste versionen finns på https://github.com/day4125/devhub
+4. Senaste versionen finns på https://github.com/day4125/ProdToolbox
 
 ## Innehåll
 
