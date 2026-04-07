@@ -1,6 +1,6 @@
 # ProdToolbox
 
-ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gränssnitt: textmanipulering, diff-jämförelse och färgverktyg.
+ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gränssnitt: textmanipulering, diff-jämförelse, färgverktyg och PDF-storlekskontroll.
 
 1. Klona eller ladda ner projektet.
 2. Öppna `index.html` i webbläsaren.
@@ -32,6 +32,15 @@ ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gr�
 - Dynamisk kontrast på etiketttext för bättre läsbarhet
 - Konverterar mellan `HEX`, `RGB` och `HSL`
 - Kopiera/klistra in i konverteraren via knappar
+
+### 📄 PDF KB per sida-kalkylator
+
+- Beräknar `KB per sida` utifrån PDF-storlek (`MB`) och sidantal
+- Accepterar decimaler i MB-fältet (även med kommatecken)
+- Visar nivå direkt medan du skriver:
+  - `Optimal` (≤ 500 KB/sida)
+  - `Tung` (501-800 KB/sida)
+  - `Kräver åtgärd` (> 800 KB/sida)
 
 ## Gränssnitt och beteende
 
