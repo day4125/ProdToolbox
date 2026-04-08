@@ -32,6 +32,7 @@ ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gr�
 - Dynamisk kontrast på etiketttext för bättre läsbarhet
 - Konverterar mellan `HEX`, `RGB` och `HSL`
 - Kopiera/klistra in i konverteraren via knappar
+- WCAG 2-kontrastkontroll mellan två `HEX`-färger med AA/AAA-status. WCAG (Web Content Accessibility Guidelines) är riktlinjer för tillgänglighet på webben.
 
 ### 📄 PDF KB per sida-kalkylator
 

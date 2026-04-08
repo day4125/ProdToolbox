@@ -239,6 +239,93 @@
                 </div>
               </div>
             </div>
+
+            <div class="converter-section wcag-section">
+              <h3>WCAG 2-kontrastkontroll</h3>
+
+              <div class="wcag-grid">
+                <div class="converter-group">
+                  <label for="wcagForeground">Textfärg (HEX):</label>
+                  <input
+                    type="text"
+                    id="wcagForeground"
+                    placeholder="#000000"
+                    maxlength="7"
+                    value="#000000" />
+                </div>
+
+                <div class="converter-group">
+                  <label for="wcagBackground">Bakgrundsfärg (HEX):</label>
+                  <input
+                    type="text"
+                    id="wcagBackground"
+                    placeholder="#FFFFFF"
+                    maxlength="7"
+                    value="#FFFFFF" />
+                </div>
+              </div>
+
+              <div class="wcag-preview" id="wcagPreview">Exempeltext Aa</div>
+
+              <div class="wcag-result" id="wcagResult">
+                Fyll i två giltiga HEX-färger.
+              </div>
+
+              <div class="wcag-levels">
+                <div class="wcag-level-row">
+                  <span class="wcag-level-label"
+                    >AA normal text (4.5:1)
+                    <span class="info-icon" aria-label="Mer information">
+                      i
+                      <span class="tooltip-text"
+                        >AA är en grundnivå i WCAG för läsbarhet. För normal
+                        text krävs minst 4.5:1 i kontrast.</span
+                      >
+                    </span>
+                  </span>
+                  <span class="wcag-status-badge" id="wcagAaNormal">-</span>
+                </div>
+                <div class="wcag-level-row">
+                  <span class="wcag-level-label"
+                    >AAA normal text (7:1)
+                    <span class="info-icon" aria-label="Mer information">
+                      i
+                      <span class="tooltip-text"
+                        >AAA är en striktare WCAG-nivå med högre tillgänglighet.
+                        För normal text krävs minst 7:1 i kontrast.</span
+                      >
+                    </span>
+                  </span>
+                  <span class="wcag-status-badge" id="wcagAaaNormal">-</span>
+                </div>
+                <div class="wcag-level-row">
+                  <span class="wcag-level-label"
+                    >AA stor text (3:1)
+                    <span class="info-icon" aria-label="Mer information">
+                      i
+                      <span class="tooltip-text"
+                        >AA för stor text kräver minst 3:1. Stor text anses vara
+                        minst 18 pt, eller 14 pt i fet stil.</span
+                      >
+                    </span>
+                  </span>
+                  <span class="wcag-status-badge" id="wcagAaLarge">-</span>
+                </div>
+                <div class="wcag-level-row">
+                  <span class="wcag-level-label"
+                    >AAA stor text (4.5:1)
+                    <span class="info-icon" aria-label="Mer information">
+                      i
+                      <span class="tooltip-text"
+                        >AAA för stor text kräver minst 4.5:1 och ger högre
+                        tillgänglighet än AA.</span
+                      >
+                    </span>
+                  </span>
+                  <span class="wcag-status-badge" id="wcagAaaLarge">-</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

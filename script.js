@@ -504,6 +504,145 @@ document.addEventListener("DOMContentLoaded", () => {
     renderInputs();
   }
 
+  function setupWcagChecker() {
+    const foregroundInput = document.getElementById("wcagForeground");
+    const backgroundInput = document.getElementById("wcagBackground");
+    const preview = document.getElementById("wcagPreview");
+    const result = document.getElementById("wcagResult");
+    const aaNormal = document.getElementById("wcagAaNormal");
+    const aaaNormal = document.getElementById("wcagAaaNormal");
+    const aaLarge = document.getElementById("wcagAaLarge");
+    const aaaLarge = document.getElementById("wcagAaaLarge");
+
+    if (
+      !foregroundInput ||
+      !backgroundInput ||
+      !preview ||
+      !result ||
+      !aaNormal ||
+      !aaaNormal ||
+      !aaLarge ||
+      !aaaLarge
+    ) {
+      return;
+    }
+
+    function normalizeHex(value) {
+      const cleaned = value.trim().replace(/^#/, "");
+      if (!/^[0-9a-f]{3}$|^[0-9a-f]{6}$/i.test(cleaned)) {
+        return null;
+      }
+      const expanded = cleaned.length === 3
+        ? cleaned.split("").map((char) => char + char).join("")
+        : cleaned;
+      return `#${expanded.toUpperCase()}`;
+    }
+
+    function getRelativeLuminance(hex) {
+      const rgb = hexToRgb(hex);
+      if (!rgb) return null;
+
+      const toLinear = (channel) => {
+        const normalized = channel / 255;
+        return normalized <= 0.03928
+          ? normalized / 12.92
+          : Math.pow((normalized + 0.055) / 1.055, 2.4);
+      };
+
+      const r = toLinear(rgb.r);
+      const g = toLinear(rgb.g);
+      const b = toLinear(rgb.b);
+
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    function getContrastRatio(firstHex, secondHex) {
+      const lum1 = getRelativeLuminance(firstHex);
+      const lum2 = getRelativeLuminance(secondHex);
+      if (lum1 === null || lum2 === null) return null;
+      const lighter = Math.max(lum1, lum2);
+      const darker = Math.min(lum1, lum2);
+      return (lighter + 0.05) / (darker + 0.05);
+    }
+
+    function setBadgeState(element, isPass) {
+      element.classList.remove("pass", "fail");
+      if (isPass === null) {
+        element.textContent = "-";
+        return;
+      }
+      if (isPass) {
+        element.textContent = "Godkänd";
+        element.classList.add("pass");
+      } else {
+        element.textContent = "Ej godkänd";
+        element.classList.add("fail");
+      }
+    }
+
+    function resetBadges() {
+      setBadgeState(aaNormal, null);
+      setBadgeState(aaaNormal, null);
+      setBadgeState(aaLarge, null);
+      setBadgeState(aaaLarge, null);
+    }
+
+    function updateWcagResults() {
+      const foregroundHex = normalizeHex(foregroundInput.value);
+      const backgroundHex = normalizeHex(backgroundInput.value);
+
+      result.classList.remove("pass", "warn", "fail");
+
+      if (!foregroundHex || !backgroundHex) {
+        preview.style.backgroundColor = "";
+        preview.style.color = "";
+        result.textContent = "Ange giltiga HEX-värden, t.ex. #1A2B3C eller #ABC.";
+        resetBadges();
+        return;
+      }
+
+      preview.style.backgroundColor = backgroundHex;
+      preview.style.color = foregroundHex;
+
+      const contrastRatio = getContrastRatio(foregroundHex, backgroundHex);
+      if (contrastRatio === null) {
+        result.textContent = "Kunde inte beräkna kontrasten.";
+        result.classList.add("fail");
+        resetBadges();
+        return;
+      }
+
+      const roundedRatio = contrastRatio.toLocaleString("sv-SE", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+
+      const passAaNormal = contrastRatio >= 4.5;
+      const passAaaNormal = contrastRatio >= 7;
+      const passAaLarge = contrastRatio >= 3;
+      const passAaaLarge = contrastRatio >= 4.5;
+
+      setBadgeState(aaNormal, passAaNormal);
+      setBadgeState(aaaNormal, passAaaNormal);
+      setBadgeState(aaLarge, passAaLarge);
+      setBadgeState(aaaLarge, passAaaLarge);
+
+      if (passAaaNormal) {
+        result.classList.add("pass");
+      } else if (passAaNormal) {
+        result.classList.add("warn");
+      } else {
+        result.classList.add("fail");
+      }
+
+      result.textContent = `Kontrastförhållande: ${roundedRatio}:1`;
+    }
+
+    foregroundInput.addEventListener("input", updateWcagResults);
+    backgroundInput.addEventListener("input", updateWcagResults);
+    updateWcagResults();
+  }
+
   function updateColor() {
     const colorValue = colorInput.value;
     colorPreview.style.backgroundColor = colorValue;
@@ -574,6 +713,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize Converter
     setupColorConverter();
+    setupWcagChecker();
   } else {
     console.error("Color picker elements not found!");
   }
