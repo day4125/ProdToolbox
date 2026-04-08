@@ -36,7 +36,6 @@ ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gr�
 ### 📄 PDF KB per sida-kalkylator
 
 - Beräknar `KB per sida` utifrån PDF-storlek (`MB`) och sidantal
-- Accepterar decimaler i MB-fältet (även med kommatecken)
 - Visar nivå direkt medan du skriver:
   - `Optimal` (≤ 300 KB/sida)
   - `Tung` (> 300 och ≤ 600 KB/sida)
