@@ -85,11 +85,9 @@ function transformText(operation) {
       text = text
         .replace(/&shy;/gi, "") // Remove &shy; (case-insensitive)
         .replace(/[\u00ad]/g, "") // Remove actual soft hyphen character
+        .replace(/"/g, "”") // Normalize straight double quotes for Swedish usage
         .replace(/\s+/g, " ") // Replace multiple whitespace with single space
         .trim(); // Trim beginning/end
-      break;
-    case "smartQuotes":
-      text = text.replace(/"/g, "”");
       break;
     case "toSuperscriptNumbers":
       text = text.replace(/[0-9]/g, (digit) => superscriptDigits[digit]);

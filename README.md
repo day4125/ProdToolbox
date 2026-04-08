@@ -11,7 +11,7 @@ ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gr�
 
 ### 📝 Textmanipulator
 
-- Rensa text (tar bort mjuka bindestreck, radbrytningar och extra mellanrum)
+- Rensa text (tar bort mjuka bindestreck, radbrytningar och extra mellanrum samt byter `"` till `”`)
 - Konvertera till versaler eller gemener
 - Konvertera siffror `0-9` till upphöjt eller nedsänkt format
 - Konvertera bokstäver `a-z` till upphöjt eller nedsänkt format (där tecken finns)
