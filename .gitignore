@@ -1,0 +1,8 @@
+# OS-specifika filer
+.DS_Store
+Thumbs.db
+
+# Editor-specifika mappar
+.vscode/
+.idea/
+*.swp

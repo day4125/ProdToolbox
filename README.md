@@ -38,9 +38,9 @@ ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gr�
 - Beräknar `KB per sida` utifrån PDF-storlek (`MB`) och sidantal
 - Accepterar decimaler i MB-fältet (även med kommatecken)
 - Visar nivå direkt medan du skriver:
-  - `Optimal` (≤ 500 KB/sida)
-  - `Tung` (501-800 KB/sida)
-  - `Kräver åtgärd` (> 800 KB/sida)
+  - `Optimal` (≤ 300 KB/sida)
+  - `Tung` (> 300 och ≤ 600 KB/sida)
+  - `Kräver åtgärd` (> 600 KB/sida)
 
 ## Gränssnitt och beteende
 
