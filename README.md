@@ -39,8 +39,7 @@ ProdToolbox är javascript-verktyg jag använder regelbundet samlade i samma gr�
 - Beräknar `KB per sida` utifrån PDF-storlek (`MB`) och sidantal
 - Visar nivå direkt medan du skriver:
   - `Optimal` (≤ 300 KB/sida)
-  - `Tung` (> 300 och ≤ 600 KB/sida)
-  - `Kräver åtgärd` (> 600 KB/sida)
+  - `Kräver åtgärd` (> 300 KB/sida)
 
 ## Gränssnitt och beteende
 

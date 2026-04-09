@@ -576,18 +576,6 @@ body.dark-mode #pdf-kb-calculator .pdf-result.optimal {
   color: #b7f7c2;
 }
 
-#pdf-kb-calculator .pdf-result.heavy {
-  background-color: #fff8e1;
-  border-color: #f9ab00;
-  color: #8a5a00;
-}
-
-body.dark-mode #pdf-kb-calculator .pdf-result.heavy {
-  background-color: #4a3a1a;
-  border-color: #ffd666;
-  color: #ffe7a6;
-}
-
 #pdf-kb-calculator .pdf-result.action {
   background-color: #fdeaea;
   border-color: #d93025;

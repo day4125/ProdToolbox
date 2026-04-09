@@ -846,7 +846,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sizeValue = pdfSizeMbInput.value.trim().replace(",", ".");
     const pageValue = pdfPageCountInput.value.trim();
 
-    pdfKbResult.classList.remove("optimal", "heavy", "action");
+    pdfKbResult.classList.remove("optimal", "action");
 
     if (!sizeValue || !pageValue) {
       pdfKbResult.textContent = "Fyll i båda fälten för att se resultat.";
@@ -875,12 +875,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (kbPerPage <= 300) {
       pdfKbResult.classList.add("optimal");
       pdfKbResult.textContent = `${formattedResult} KB per sida - Optimal`;
-      return;
-    }
-
-    if (kbPerPage <= 600) {
-      pdfKbResult.classList.add("heavy");
-      pdfKbResult.textContent = `${formattedResult} KB per sida - Tung`;
       return;
     }
 
