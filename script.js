@@ -101,6 +101,11 @@ function transformText(operation) {
     case "toSubscriptLetters":
       text = text.replace(/[a-z]/g, (letter) => subscriptLetters[letter] || letter);
       break;
+    case "removeSvgTags":
+      text = text
+        .replace(/<svg\b[^>]*>[\s\S]*?<\/svg>/gi, "")
+        .replace(/<svg\b[^>]*\/>/gi, "");
+      break;
   }
 
   inputTextElement.value = text;
